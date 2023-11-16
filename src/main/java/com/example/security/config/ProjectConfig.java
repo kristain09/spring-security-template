@@ -24,9 +24,16 @@ public class ProjectConfig {
         return new InMemoryUserDetailsManager(kris);
     }
 
+
+    //Customizer is an interface(contract) to define customization for either
+    // Spring security element to configure
+    // it is functional interface, so WE CAN USE LAMBDA EXPRESSION TO
+    // IMPLEMENT IT and with defaults is does nothing bro!
     @Bean
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
+        //whole app
         http.httpBasic(Customizer.withDefaults());
+        // endpoint level
         http.authorizeHttpRequests(c -> c.anyRequest().permitAll());
         return http.build();
     }
