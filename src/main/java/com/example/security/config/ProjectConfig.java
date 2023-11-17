@@ -14,10 +14,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 
-@Configuration
+// not set as configuration
 public class ProjectConfig {
 
-    @Bean
+    //not set as bean to ignore
     UserDetailsService userDetailsService() {
         UserDetails kris =
                 User.withUsername("kris").password("password").authorities("read").build();
@@ -29,7 +29,8 @@ public class ProjectConfig {
     // Spring security element to configure
     // it is functional interface, so WE CAN USE LAMBDA EXPRESSION TO
     // IMPLEMENT IT and with defaults is does nothing bro!
-    @Bean
+
+    //not set as bean to ignore temporaly
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
         //whole app
         http.httpBasic(Customizer.withDefaults());
@@ -38,7 +39,7 @@ public class ProjectConfig {
         return http.build();
     }
 
-    @Bean
+    //not set as bean to ignore temporaly
     public PasswordEncoder passwordEncoder() {
         //deprecated but i do not care
         return NoOpPasswordEncoder.getInstance();
